@@ -81,9 +81,6 @@ export function DashboardPage() {
                 <h2 className="font-serif text-xl font-semibold text-enstays-text">
                   Recent Platform Activity
                 </h2>
-                <span className="text-xs font-semibold text-enstays-gold">
-                  /platform/dashboard
-                </span>
               </div>
 
               <div className="overflow-x-auto">
