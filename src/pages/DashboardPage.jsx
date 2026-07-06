@@ -3,50 +3,59 @@ import { PageHeader } from '../components/PageHeader';
 import { StatCard } from '../components/StatCard';
 
 const recentItems = [
-  ['Taj Hotels', 'Hotel Group created', 'ACTIVE'],
-  ['Taj Goa', 'Property added', 'ACTIVE'],
-  ['Cloudbeds', 'PMS provider draft', 'PENDING'],
-  ['Digital Key', 'Module disabled by default', 'DISABLED'],
+  ['Taj Hotels', 'Hotel Group created', 'ACTIVE', 'done'],
+  ['Taj Goa', 'Property added', 'ACTIVE', 'done'],
+  ['Cloudbeds', 'PMS provider draft', 'PENDING', 'progress'],
+  ['Digital Key', 'Module disabled by default', 'DISABLED', 'urgent'],
 ];
+
+const pillClasses = {
+  done: 'border-enstays-doneLine bg-enstays-doneBg text-enstays-done',
+  progress: 'border-enstays-progressLine bg-enstays-progressBg text-enstays-progress',
+  urgent: 'border-enstays-urgentLine bg-enstays-urgentBg text-enstays-urgent',
+};
 
 export function DashboardPage() {
   return (
     <section className="space-y-8">
       <PageHeader
         title="Platform Overview"
-        description="Start here for Enstays platform health, hotel groups, properties, PMS connectivity and module readiness."
+        description="Start here for Enstays platform health, hotel groups, properties, PMS connectivity and module readiness. Visual theme now follows the dark Enstays Console reference."
         actionLabel="Create Hotel Group"
       />
 
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard title="Hotel Groups" value="12" helper="Chains, independent hotels and operators" icon={Building2} />
-        <StatCard title="Properties" value="38" helper="Across all active groups" icon={Hotel} />
-        <StatCard title="PMS Connected" value="9" helper="Production and sandbox configs" icon={PlugZap} />
-        <StatCard title="Open Alerts" value="3" helper="Failed syncs and pending reviews" icon={ShieldAlert} />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <StatCard title="Hotel Groups" value="12" helper="Chains, independent hotels and operators" icon={Building2} tone="gold" />
+        <StatCard title="Properties" value="38" helper="Across all active groups" icon={Hotel} tone="blue" />
+        <StatCard title="PMS Connected" value="9" helper="Production and sandbox configs" icon={PlugZap} tone="green" />
+        <StatCard title="Open Alerts" value="3" helper="Failed syncs and pending reviews" icon={ShieldAlert} tone="urgent" />
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
-        <div className="rounded-3xl bg-white p-6 shadow-soft">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-enstays-green">Recent Platform Activity</h2>
-            <button className="text-sm font-semibold text-enstays-blue">View all</button>
+      <div className="grid gap-5 xl:grid-cols-[1.35fr_0.65fr]">
+        <div className="console-card overflow-hidden">
+          <div className="flex items-center justify-between border-b border-enstays-line px-[18px] py-4">
+            <h2 className="font-serif text-xl font-semibold text-enstays-text">Recent Platform Activity</h2>
+            <button className="text-xs font-semibold text-enstays-gold">View all</button>
           </div>
-          <div className="mt-5 overflow-hidden rounded-2xl border border-black/5">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-enstays-green text-black">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Name</th>
-                  <th className="px-4 py-3 font-semibold">Activity</th>
-                  <th className="px-4 py-3 font-semibold">Status</th>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px] border-collapse text-left text-[13px]">
+              <thead>
+                <tr className="border-b border-enstays-line bg-enstays-bg2 text-[10.5px] uppercase tracking-[0.07em] text-enstays-text3">
+                  <th className="px-4 py-3 font-bold">Name</th>
+                  <th className="px-4 py-3 font-bold">Activity</th>
+                  <th className="px-4 py-3 font-bold">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {recentItems.map(([name, activity, status]) => (
-                  <tr key={`${name}-${activity}`} className="border-t border-black/5">
-                    <td className="px-4 py-4 font-medium text-enstays-ink">{name}</td>
-                    <td className="px-4 py-4 text-enstays-slate">{activity}</td>
+                {recentItems.map(([name, activity, status, tone]) => (
+                  <tr key={`${name}-${activity}`} className="border-b border-enstays-line last:border-b-0 hover:bg-enstays-surface2">
+                    <td className="px-4 py-4 font-semibold text-enstays-text">{name}</td>
+                    <td className="px-4 py-4 text-enstays-text2">{activity}</td>
                     <td className="px-4 py-4">
-                      <span className="rounded-full bg-enstays-ivory px-3 py-1 text-xs font-semibold text-enstays-green">{status}</span>
+                      <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-bold ${pillClasses[tone]}`}>
+                        <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                        {status}
+                      </span>
                     </td>
                   </tr>
                 ))}
@@ -55,15 +64,17 @@ export function DashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-enstays-green p-6 text-black shadow-soft">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-enstays-gold">Build Order</p>
-          <h2 className="mt-3 text-2xl font-semibold">Super Admin first</h2>
-          <p className="mt-3 text-sm leading-6 text-black/75">
+        <div className="console-card border-enstays-goldLine bg-enstays-goldSoft p-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-enstays-gold">Build Order</p>
+          <h2 className="mt-3 font-serif text-[28px] font-semibold leading-none text-enstays-text">Super Admin first</h2>
+          <p className="mt-3 text-[13px] leading-6 text-enstays-text2">
             Create hotel groups, optional brands, properties, PMS providers, capabilities and modules before moving into operations.
           </p>
-          <div className="mt-6 space-y-3 text-sm">
+          <div className="mt-6 space-y-3 text-[13px]">
             {['Hotel Groups', 'Hotel Brands', 'Properties', 'PMS Config', 'Modules'].map((item) => (
-              <div key={item} className="rounded-2xl bg-white/10 px-4 py-3">{item}</div>
+              <div key={item} className="rounded-[11px] border border-enstays-line bg-enstays-surface px-4 py-3 font-medium text-enstays-text2">
+                {item}
+              </div>
             ))}
           </div>
         </div>

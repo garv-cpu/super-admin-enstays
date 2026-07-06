@@ -1,8 +1,11 @@
 export function EmptyState({ title, description }) {
   return (
-    <div className="rounded-3xl border border-dashed border-enstays-green/20 bg-white/70 p-10 text-center">
-      <h2 className="text-xl font-semibold text-enstays-green">{title}</h2>
-      <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-enstays-slate">{description}</p>
+    <div className="console-card p-12 text-center">
+      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-enstays-goldLine bg-enstays-goldSoft text-enstays-gold">
+        <span className="text-lg">•</span>
+      </div>
+      <h2 className="font-serif text-2xl font-semibold text-enstays-text">{title}</h2>
+      <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-6 text-enstays-text2">{description}</p>
     </div>
   );
 }

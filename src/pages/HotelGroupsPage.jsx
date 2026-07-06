@@ -11,7 +11,7 @@ export function HotelGroupsPage() {
       />
       <EmptyState
         title="Hotel group module placeholder"
-        description="Connect this screen later to POST /hotel-groups and GET /hotel-groups when backend work starts."
+        description="Connect this screen later to POST /hotel-groups and GET /hotel-groups when backend APIs are connected."
       />
     </section>
   );

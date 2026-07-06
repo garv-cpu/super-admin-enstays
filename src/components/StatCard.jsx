@@ -1,15 +1,22 @@
-export function StatCard({ title, value, helper, icon: Icon }) {
+export function StatCard({ title, value, helper, icon: Icon, tone = 'gold' }) {
+  const toneClasses = {
+    gold: 'border-enstays-goldLine bg-enstays-goldSoft text-enstays-gold',
+    blue: 'border-enstays-newLine bg-enstays-newBg text-enstays-new',
+    green: 'border-enstays-doneLine bg-enstays-doneBg text-enstays-done',
+    urgent: 'border-enstays-urgentLine bg-enstays-urgentBg text-enstays-urgent',
+  };
+
   return (
-    <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-soft">
+    <article className="console-card p-[18px] transition hover:-translate-y-0.5 hover:border-enstays-goldLine hover:bg-enstays-surface2">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium text-enstays-slate">{title}</p>
-          <h3 className="mt-3 text-3xl font-semibold text-enstays-green">{value}</h3>
-          <p className="mt-2 text-sm text-enstays-slate">{helper}</p>
+          <p className="text-[12px] font-medium text-enstays-text2">{title}</p>
+          <h3 className="mt-4 text-[38px] font-medium leading-none text-enstays-text">{value}</h3>
+          <p className="mt-2 text-[12px] leading-5 text-enstays-text2">{helper}</p>
         </div>
         {Icon ? (
-          <div className="rounded-2xl bg-enstays-ivory p-3 text-enstays-green">
-            <Icon size={22} />
+          <div className={`flex h-[42px] w-[42px] items-center justify-center rounded-xl border ${toneClasses[tone] || toneClasses.gold}`}>
+            <Icon size={21} />
           </div>
         ) : null}
       </div>

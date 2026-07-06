@@ -41,4 +41,3 @@ Copy `.env.example` to `.env` when backend is ready.
 ```bash
 cp .env.example .env
 ```
-# super-admin-enstays
