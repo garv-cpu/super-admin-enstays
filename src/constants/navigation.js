@@ -1,21 +1,21 @@
 import {
+  Activity,
   Building2,
-  Gauge,
   Hotel,
-  Layers3,
+  LayoutDashboard,
   PlugZap,
+  Settings,
   ShieldCheck,
-  UsersRound,
-  ScrollText,
+  Users,
 } from 'lucide-react';
 
 export const navigationItems = [
-  { label: 'Dashboard', path: '/', icon: Gauge },
+  { label: 'Dashboard', path: '/', icon: LayoutDashboard },
   { label: 'Hotel Groups', path: '/hotel-groups', icon: Building2 },
-  { label: 'Brands', path: '/brands', icon: Layers3 },
+  { label: 'Hotel Brands', path: '/brands', icon: ShieldCheck },
   { label: 'Properties', path: '/properties', icon: Hotel },
   { label: 'PMS Providers', path: '/pms-providers', icon: PlugZap },
-  { label: 'Platform Users', path: '/platform-users', icon: UsersRound },
-  { label: 'Roles & Permissions', path: '/roles-permissions', icon: ShieldCheck },
-  { label: 'Audit Logs', path: '/audit-logs', icon: ScrollText },
+  { label: 'Platform Users', path: '/platform-users', icon: Users },
+  { label: 'Settings', path: '/settings', icon: Settings },
+  { label: 'Audit Logs', path: '/audit-logs', icon: Activity },
 ];

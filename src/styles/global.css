@@ -331,3 +331,61 @@ a,
   color: var(--gold) !important;
   stroke: var(--gold) !important;
 }
+
+.console-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  padding: 11px 13px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #ffffff !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.console-nav-link svg,
+.console-nav-link span {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
+
+.console-nav-link:hover {
+  background: var(--surface);
+  color: #ffffff !important;
+}
+
+.console-nav-link-active {
+  background: var(--gold-dim) !important;
+  border-color: var(--gold-line) !important;
+  color: var(--gold) !important;
+  font-weight: 600;
+}
+
+.console-nav-link-active svg,
+.console-nav-link-active span {
+  color: var(--gold) !important;
+  stroke: var(--gold) !important;
+}
+
+.input-console {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  color: var(--txt);
+  padding: 12px 13px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-console::placeholder {
+  color: var(--txt3);
+}
+
+.input-console:focus {
+  border-color: var(--gold-line);
+  box-shadow: 0 0 0 3px rgba(212,169,78,0.10);
+}
